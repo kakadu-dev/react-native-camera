@@ -1674,7 +1674,10 @@ BOOL _sessionInterrupted = NO;
     if (_metadataOutput == nil) {
         return;
     }
-    [_metadataOutput setRectOfInterest: _rectOfInterest];
+    
+    CGRect convertedRect = [_previewLayer metadataOutputRectOfInterestForRect:_rectOfInterest];
+
+    [_metadataOutput setRectOfInterest: convertedRect];
 }
 
 - (void)_setupOrDisableMetadataOutput
